@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>給妳的小禮物</title>
+  <meta name="description" content="每天一個小驚喜。" />
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="intro" class="intro hidden" role="dialog" aria-modal="true" aria-label="拉開窗簾進來">
+  <div class="curtain curtain--left" aria-hidden="true"></div>
+  <div class="curtain curtain--right" aria-hidden="true"></div>
+
+  <div class="intro__center">
+    <div class="intro__card">
+      <div class="intro__title">進來一下</div>
+      <div class="intro__gif" aria-hidden="true">
+        <img src="assets/gift.gif" alt="" />
+      </div>
+      <button id="enterBtn" class="primary introBtn">拉開窗簾</button>
+      <div class="intro__small">每天第一次進來會有這個小儀式。</div>
+    </div>
+  </div>
+</div>
+
+<div class="room-vines" aria-hidden="true"></div>
+
+  <div class="bg"></div>
+  <div class="decor" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">🎁 給妳的</div>
+    <div class="topRight">
+      <button id="musicBtn" class="ghost" aria-pressed="false">音樂：關</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero card cardShimmer">
+      <div class="hero__text">
+        <h1 id="headline">hihi fuku牛仔rou!! 🍀🍀🍀</h1>
+        <p class="sub" id="subline">來拆今天的小禮物 ✨</p>
+
+        <div class="ctaRow">
+          <button id="openBtn" class="primary">打開今天的禮物</button>
+</div>
+
+        <div class="microHint" id="microHint">今日運氣包</div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="giftPreview" aria-hidden="true">
+          <img src="assets/gift.gif" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="giftEmoji" aria-hidden="true" style="display:none">🎁</div>
+        </div>
+      
+      <div class="catBtnRow">
+        <button id="catPeekBtn" class="catPeekBtn">看一眼小貓 🐾</button>
+      </div>
+</div>
+    </section>
+
+    <section id="content" class="content card cardShimmer hidden" aria-live="polite">
+      <div class="packTag" id="packTag"></div>
+      <div class="grid">
+        <article class="tile">
+          <div class="tile__kicker">今日幸運顏色</div>
+          <div class="colorRow">
+            <div id="colorSwatch" class="swatch" title="Lucky Color"></div>
+            <div>
+              <div id="colorName" class="tile__title">—</div>
+              <div id="colorWhy" class="tile__desc">—</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile__kicker">今天的一句話</div>
+          <div id="dailyLine" class="quote">—</div>
+          <div class="small" id="quoteMeta">—</div>
+        </article>
+
+        <article class="tile">
+          <div class="tile__kicker">今天適合做一件小事</div>
+          <div id="microAction" class="tile__title">—</div>
+          <div id="microWhy" class="tile__desc">—</div>
+        </article>
+
+        <article class="tile">
+          <div class="tile__kicker">暗號</div>
+          <div class="tile__title">我開箱了</div>
+          <div class="tile__desc">想回就回，不想回也沒關係。</div>
+          <button id="copyBtn" class="secondary smallBtn">複製</button>
+          <div id="copyToast" class="toast" role="status" aria-live="polite">已複製</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="開箱中">
+    <div class="overlay__card">
+      <div class="overlay__title" id="overlayTitle">開箱中…</div>
+      <div class="overlay__gif">
+        <img src="assets/gift.gif" alt="開箱動畫" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="giftEmoji big" aria-hidden="true" style="display:none">🎁</div>
+      </div>
+      <div class="overlay__bar">
+        <div id="progress" class="overlay__progress"></div>
+      </div>
+      <button id="skipBtn" class="secondary skipBtn">直接看內容</button>
+    </div>
+  </div>
+
+  <audio id="bgm" preload="none" loop>
+    <!-- Optional: you can add your own mp3 later -->
+  </audio>
+
+
+  <div id="catModal" class="catModal hidden" role="dialog" aria-modal="true" aria-label="小貓">
+    <div class="catModal__card">
+      <div class="catModal__head">
+        <div class="catModal__title">小貓在這裡</div>
+        <button id="catCloseBtn" class="catModal__close">關閉</button>
+      </div>
+      <img class="catModal__img" src="assets/cat.jpg" alt="小貓" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
