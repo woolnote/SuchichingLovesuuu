@@ -399,6 +399,27 @@ musicBtn.setAttribute("aria-pressed", String(!!state.musicOn));
     cw.textContent = p.why;
   }
 })();
+function msUntilNextMidnight(timeZone) {
+  const now = new Date();
+  // 用本地時區就不傳 timeZone；要固定時區才傳
+  const local = timeZone ? new Date(new Intl.DateTimeFormat("en-US", { timeZone }).format(now)) : now;
+
+  const next = new Date(local);
+  next.setHours(24, 0, 0, 0);
+  return next.getTime() - local.getTime();
+}
+
+function scheduleMidnightReload({ timeZone } = {}) {
+  const wait = msUntilNextMidnight(timeZone);
+  setTimeout(() => {
+    location.reload();
+  }, wait + 50); // +50ms 避免邊界誤差
+}
+
+// 初始化完成後呼叫（本地時間）：
+scheduleMidnightReload();
+// 若你要“固定用台灣時間”
+// scheduleMidnightReload({ timeZone: "Asia/Taipei" });
 
 
 
